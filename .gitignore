@@ -1,0 +1,111 @@
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+bin/
+obj/
+*.user
+*.vspscc
+*.vssscc
+.vscode/
+.vs/
+
+# Build Folders (you can keep bin if you'd like to checkin those binaries)
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# User-specific files #
+######################
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# SQLite
+*.db
+*.db-shm
+*.db-wal
+
+# Files built by Visual Studio
+##############################
+.vscode/
+.vs/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Azure DevOps
+################
+.azuredevops/
+
+# Node.js
+################
+node_modules/
+
+# Npm package
+*.tgz
+!.npmrc
+
+# Yarn
+.yarn/
+.pnp.*
+*.pnp.js
+
+# npm cache
+.npm
+
+# Yarn Integrity file
+.yarn-integrity
+
+# dotenv environment variables file
+.env
+
+# Next.js build output
+.next
+
+# Gatsby files
+.cache/
+public
+
+# Hugo
+/public/
+.resources/
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt/
+
+# Bower dependency directory (https://bower.io/)
+bower_components/
+
+# NuGet Packages
+###################
+*.nupkg
+*.snupkg
+.nuget/packages/
+.nuget/NuGet.Config
+**/project.lock.json
+
+# Entity Framework
+####################
+*_migration.sql
