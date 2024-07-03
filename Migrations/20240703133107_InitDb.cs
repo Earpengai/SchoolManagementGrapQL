@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchoolManagementGraphQL.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDb : Migration
+    public partial class InitDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,13 +17,13 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Classrooms",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Capacity = table.Column<int>(type: "int", nullable: false),
-                    HasComputers = table.Column<bool>(type: "bit", nullable: false),
-                    HasProjector = table.Column<bool>(type: "bit", nullable: false),
-                    HasWhiteboard = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Capacity = table.Column<int>(type: "integer", nullable: false),
+                    HasComputers = table.Column<bool>(type: "boolean", nullable: false),
+                    HasProjector = table.Column<bool>(type: "boolean", nullable: false),
+                    HasWhiteboard = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,9 +34,9 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Departments",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,12 +47,12 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Equipment",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Condition = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Brand = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Condition = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Brand = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,12 +63,12 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Furniture",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Color = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Material = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Color = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Material = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -79,13 +79,13 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "LabRooms",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    Capacity = table.Column<int>(type: "int", nullable: false),
-                    Subject = table.Column<string>(type: "nvarchar(64)", maxLength: 64, nullable: false),
-                    Equipment = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    HasChemicals = table.Column<bool>(type: "bit", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    Capacity = table.Column<int>(type: "integer", nullable: false),
+                    Subject = table.Column<string>(type: "character varying(64)", maxLength: 64, nullable: false),
+                    Equipment = table.Column<string>(type: "character varying(128)", maxLength: 128, nullable: false),
+                    HasChemicals = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -96,13 +96,13 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Courses",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    CourseCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    Credits = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    CourseType = table.Column<string>(type: "nvarchar(16)", maxLength: 16, nullable: false),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    CourseCode = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
+                    Credits = table.Column<int>(type: "integer", nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    CourseType = table.Column<string>(type: "character varying(16)", maxLength: 16, nullable: false),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,11 +119,11 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Groups",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    GroupCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Name = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    GroupCode = table.Column<string>(type: "text", nullable: false),
+                    Description = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -140,13 +140,13 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Teachers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: true),
-                    Bio = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
-                    DepartmentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Email = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Phone = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
+                    Bio = table.Column<string>(type: "character varying(500)", maxLength: 500, nullable: true),
+                    DepartmentId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,14 +162,14 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "Students",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(32)", maxLength: 32, nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: true),
-                    Grade = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    FirstName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    LastName = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Email = table.Column<string>(type: "character varying(32)", maxLength: 32, nullable: false),
+                    Phone = table.Column<string>(type: "character varying(18)", maxLength: 18, nullable: true),
+                    Grade = table.Column<string>(type: "character varying(2)", maxLength: 2, nullable: false),
                     DateOfBirth = table.Column<DateOnly>(type: "date", nullable: true),
-                    GroupId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    GroupId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,8 +186,8 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "TeacherCourses",
                 columns: table => new
                 {
-                    TeacherId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    TeacherId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CourseId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,8 +209,8 @@ namespace SchoolManagementGraphQL.Migrations
                 name: "StudentCourses",
                 columns: table => new
                 {
-                    StudentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CourseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    StudentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CourseId = table.Column<Guid>(type: "uuid", nullable: false)
                 },
                 constraints: table =>
                 {
