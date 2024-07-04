@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SchoolManagementGraphQL.Data;
 using SchoolManagementGraphQL.Models;
 
-namespace SchoolManagementGraphQL.DataLoaders;
+namespace SchoolManagementGraphQL.GraphQL.DataLoaders;
 
 public class DepartmentByTeacherIdBatchDataLoader(
     IDbContextFactory<AppDbContext> dbContextFactory,

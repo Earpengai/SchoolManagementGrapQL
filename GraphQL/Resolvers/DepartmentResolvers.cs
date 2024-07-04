@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementGraphQL.Data;
+using SchoolManagementGraphQL.GraphQL.DataLoaders;
 using SchoolManagementGraphQL.Models;
 
 namespace SchoolManagementGraphQL.GraphQL.Resolvers;
@@ -8,12 +9,12 @@ public class DepartmentResolvers
 {
     public async Task<List<Teacher>> GetTeachers(
         [Parent]Department department, 
-        [Service]IDbContextFactory<AppDbContext> dbContextFactory)
+        TeachersByDepartmentIdDataLoader teachersByDepartmentIdDataLoader,
+        CancellationToken cancellationToken)
     {
-        await using var dbcontext = await dbContextFactory.CreateDbContextAsync();
-        return await dbcontext.Teachers
-            .Where(x => x.DepartmentId == department.Id)
-            .ToListAsync();
+        var teachers = await teachersByDepartmentIdDataLoader
+            .LoadAsync(department.Id, cancellationToken);
+        return teachers.ToList();    
     }
 
     public async Task<List<Department>> GetDepartments([Service]IDbContextFactory<AppDbContext> dbContextFactory)

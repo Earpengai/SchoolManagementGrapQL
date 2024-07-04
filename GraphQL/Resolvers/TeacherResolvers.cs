@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementGraphQL.Data;
-using SchoolManagementGraphQL.DataLoaders;
+using SchoolManagementGraphQL.GraphQL.DataLoaders;
 using SchoolManagementGraphQL.Models;
 
 namespace SchoolManagementGraphQL.GraphQL.Resolvers;

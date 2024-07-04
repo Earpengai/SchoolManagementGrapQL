@@ -10,6 +10,6 @@ public class DepartmentType : ObjectType<Department>
         descriptor.Field(x => x.Teachers)
             .Description("This is the list teacher in department.")
             .Type<ListType<TeacherType>>()
-            .ResolveWith<DepartmentResolvers>(x => x.GetTeachers(default, default));
+            .ResolveWith<DepartmentResolvers>(x => x.GetTeachers(default, default, default));
     }
 }
