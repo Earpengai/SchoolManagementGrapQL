@@ -26,5 +26,10 @@ public class QueryType : ObjectType<Query>
             .Type<ListType<TeacherType>>()
             .ResolveWith<TeacherResolver>(x => x.GetTeachers(default));
 
+        descriptor.Field(x => x.Departments)
+            .Name("departments")
+            .Description("This is the list of department")
+            .Type<ListType<DepartmentType>>()
+            .ResolveWith<DepartmentResolvers>(x => x.GetDepartments(default));
     }
 }
