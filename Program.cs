@@ -5,12 +5,13 @@ using SchoolManagementGraphQL.GraphQL.Types;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<AppDbContext>(options => 
+builder.Services.AddPooledDbContextFactory<AppDbContext>(options => 
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 builder.Services
     .AddGraphQLServer()
+    .RegisterDbContext<AppDbContext>(DbContextKind.Pooled)
     .AddQueryType<QueryType>()
     .AddMutationType<Mutation>();
 

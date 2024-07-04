@@ -1,5 +1,6 @@
 
 using SchoolManagementGraphQL.Data;
+using SchoolManagementGraphQL.GraphQL.Resolvers;
 
 namespace SchoolManagementGraphQL.GraphQL.Types;
 
@@ -17,5 +18,13 @@ public class QueryType : ObjectType<Query>
                 var id = context.ArgumentValue<Guid>("id");
                 return await context.Service<AppDbContext>().Teachers.FindAsync(id);
             });
+
+        
+        descriptor.Field(x => x.Teachers)
+            .Name("teachers")
+            .Description("This is the list of teachers in school.")
+            .Type<ListType<TeacherType>>()
+            .ResolveWith<TeacherResolver>(x => x.GetTeachers(default));
+
     }
 }
