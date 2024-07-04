@@ -11,7 +11,7 @@ public class TeacherType : ObjectType<Teacher>
         descriptor.Field(x => x.Department)
             .Name("department")
             .Description("This is the department which the teacher belongs.")
-            .ResolveWith<TeacherResolver>(x => x.GetDepartment(default, default));
+            .ResolveWith<TeacherResolver>(x => x.GetDepartment(default, default, default));
             // .Resolve(async context => {
             //     return await context.Service<AppDbContext>().Departments
             //         .FindAsync(context.Parent<Teacher>().DepartmentId);

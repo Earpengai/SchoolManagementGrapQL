@@ -1,15 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolManagementGraphQL.Data;
+using SchoolManagementGraphQL.DataLoaders;
 using SchoolManagementGraphQL.Models;
 
 namespace SchoolManagementGraphQL.GraphQL.Resolvers;
 
 public class TeacherResolver
 {
-    public async Task<Department?> GetDepartment([Parent]Teacher teacher, [Service]IDbContextFactory<AppDbContext> dbContextFactory)
+    public async Task<Department?> GetDepartment(
+        [Parent]Teacher teacher, 
+        DepartmentByTeacherIdBatchDataLoader departmentByTeacherIdBatchDataLoader,
+        CancellationToken cancellationToken)
     {
-        await using var dbcontext = await dbContextFactory.CreateDbContextAsync();
-        return await dbcontext.Departments.FindAsync(teacher.DepartmentId);
+        var department = await departmentByTeacherIdBatchDataLoader.LoadAsync(teacher.DepartmentId, cancellationToken);
+        return department;
     }
     
     public async Task<List<Teacher>> GetTeachers([Service]IDbContextFactory<AppDbContext> dbContextFactory)
